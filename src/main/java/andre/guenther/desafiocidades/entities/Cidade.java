@@ -9,8 +9,13 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({
     @NamedQuery(name="Cidade.consultarCidadesCapitais",
-                query="SELECT c FROM Cidade c WHERE c.capital = true order by c.name")
+                query="SELECT c FROM Cidade c WHERE c.capital = true order by c.name"),
+    
+    @NamedQuery(name="Cidade.qtdCidadeEstado",
+    query="SELECT c.uf, count(c.name) as total from Cidade c group by c.uf order by total ")    
+    
 }) 
+
 public class Cidade {
 	@Column
 	@Id

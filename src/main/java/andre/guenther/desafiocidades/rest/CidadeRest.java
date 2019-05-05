@@ -1,6 +1,8 @@
 package andre.guenther.desafiocidades.rest;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.ws.rs.GET;
@@ -24,5 +26,13 @@ public class CidadeRest {
 		
 		return repository.consultarCidadesCapitais();
 	}	
+	
+	@GET
+	@Path("/uf/total")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Map<String, Object> qtdCidadeEstado() {
 
+		
+		return repository.qtdCidadeEstado();
+	}
 }
