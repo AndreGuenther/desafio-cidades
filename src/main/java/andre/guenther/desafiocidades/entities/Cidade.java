@@ -3,8 +3,14 @@ package andre.guenther.desafiocidades.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({
+    @NamedQuery(name="Cidade.consultarCidadesCapitais",
+                query="SELECT c FROM Cidade c WHERE c.capital = true order by c.name")
+}) 
 public class Cidade {
 	@Column
 	@Id
