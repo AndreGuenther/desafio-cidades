@@ -30,15 +30,21 @@ public class CidadeRepository {
 				
 	}
 	
-	public Map<String, Object> qtdCidadeEstado() {
+
+	
+	public List<Object[]> qtdCidadeEstado() {
 		
 		Query query = this.entityManager.createNamedQuery("Cidade.qtdCidadeEstado");
-		List<Object[]> totalCidades = query.getResultList();
-		
+		return query.getResultList();
+
+	}
+	
+	public Map<String, Object> qtdCidadeEstadoMaiorMenor() {
+	
 		Object[] maior = {"",Long.MIN_VALUE};
 		Object[] menor= {"",Long.MAX_VALUE};
 		
-		for ( Object[] total: totalCidades) {
+		for ( Object[] total: qtdCidadeEstado()) {
 			long qtd = (Long) total[1];
 			long qtdMaior = (Long) maior[1];
 			long qtdMenor = (Long) menor[1];
@@ -50,7 +56,7 @@ public class CidadeRepository {
 				menor =  total;
 			}
 		}
-		
+
 		Map<String, Object> resultMenor = new LinkedHashMap<>();
 		
 		resultMenor.put("uf", menor[0] );

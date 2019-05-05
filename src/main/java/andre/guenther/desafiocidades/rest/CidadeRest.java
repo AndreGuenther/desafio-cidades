@@ -30,9 +30,17 @@ public class CidadeRest {
 	@GET
 	@Path("/uf/total")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Map<String, Object> qtdCidadeEstado() {
+	public  List<Object[]> qtdCidadeEstado() {
 
-		
 		return repository.qtdCidadeEstado();
 	}
+	
+	@GET
+	@Path("/uf/maior-menor")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Map<String, Object> qtdCidadeEstadoMaiorMenor() {
+
+		
+		return repository.qtdCidadeEstadoMaiorMenor();
+	}	
 }
